@@ -62,13 +62,13 @@ public class BestMoveFinder {
             int valEnemy = currentTurn == 'X' ? pair.first : pair.second;
 
             if (val == 3 || valEnemy == 3) {
-                if (val == 3) score = MAX_SCORE * 5;
-                else score = -5 * MAX_SCORE;
+                if (val == 3) score = MAX_SCORE;            // KALAH
+                else score = 0;                             // MENANG
                 break;
             }
 
             if (valEnemy == 2 && val == 0) {
-                score = MAX_SCORE;
+                score = MAX_SCORE;                          // KALAH
                 break;
             }
 
@@ -77,10 +77,8 @@ public class BestMoveFinder {
                 else if (val == 2) score -= 50;
             }
 
-            if (val == 0)  {
-                if (valEnemy == 1) score += 10;
-                else if (valEnemy == 2) score += 50;
-            }
+            if (val == 0 && valEnemy == 1)
+                score += 10;
         }
         return score;
     }
